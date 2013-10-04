@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Runtime Duration: ~ 15 minutes
+
 # Test that the user is *not* root - devstack requires it be a user
 if [ "$(id -u)" == "0" ]; then
    echo "This script must be run as a user, not root" 1>&2
