@@ -24,12 +24,15 @@ sudo iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o eth0 -j MASQUERADE
 # Create trove instance
 # $ ./redstack rd-client instance create --name=foobar --flavor=7 --size=1
 # $ ./redstack rd-client instance get --id=<UUID_IN_JSON_FROM_INSTANCE_CREATE>
-# $ ssh <IP> # returned from 'redstack rd-client instance get' command - VM takes a bit to come up, be patient
+# $ ssh <IP_RETURNED_FROM_INSTANCE_GET> - VM takes a bit to come up, be patient
 
 # Create database in trove instance
 # Once this says that the instance's status is READY: $ ./redstack rd-client instance get --id=<UUID_IN_JSON_FROM_INSTANCE_CREATE>
 # $ ./redstack rd-client database create --name=foobar-db --id=<UUID_IN_JSON_FROM_INSTANCE_CREATE>
 # $ ./redstack rd-client root create --id=<UUID_IN_JSON_FROM_INSTANCE_CREATE>
+
+# Log into trove instance MySQL db
+# $ mysql -uroot -p<PASSWORD_RETURNED_FROM_ROOT_CREATE> -h <IP_RETURNED_FROM_INSTANCE_GET>
 
 # Check logs (in trove instance)
 #cat /tmp/logfile.txt
