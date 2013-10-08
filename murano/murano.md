@@ -1,5 +1,7 @@
 # Project Murano 
 
+Date: 10/4/2013
+
 ## Elevator Pitch
 
 Murano allows non-experienced users to deploy reliable Windows based environments in a "push-the-button" manner. Using native windows features for HA solutions, Murano automates deployments of common Windows infrastructures on top of an OpenStack cloud.
