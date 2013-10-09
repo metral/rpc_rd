@@ -41,6 +41,16 @@ The aim is to create an open alternative to SQS (producer-consumer) and SNS
 * Send commands to one or more agents (point-to-point or pub-sub)
 * Request an action or get information from an agent (RPC)
 
+## Out of Scope Use Cases
+Marconi may be used as the foundation for other services to support the
+following use cases, but will not support them directly within its code base.
+
+* Forwarding notifications to email, SMS, Twitter, etc.
+* Forwarding notifications to web hooks
+* Forwarding notifications to APNS, GCM, etc.
+* Scheduling-as-a-service
+* Metering usage
+
 ## Community Information
 * Use OpenStack infrastructure
   * gerrit code reviews
@@ -52,7 +62,7 @@ The aim is to create an open alternative to SQS (producer-consumer) and SNS
 
 ## Links
 * [Wiki](https://wiki.openstack.org/wiki/Marconi)
-
+* [DevStack Integration Blueprint](https://blueprints.launchpad.net/devstack/+spec/marconi-devstack-integration)
 
 ## Code Repositories
 * [Source](https://github.com/stackforge/marconi)
