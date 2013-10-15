@@ -1,0 +1,125 @@
+
+################################################################
+Owner/Repo: openstack / savanna
+----------------------------------------------------------------
+
+{'blog': u'slukjanov.name', 'email': u'me@slukjanov.name', 'login': u'Frostman', 'company': u'Mirantis Inc.', 'location': u'Russia, Saratov'}
+{'blog': None, 'email': None, 'login': u'dmitrymex', 'company': u'Mirantis', 'location': u'Saratov, Russia'}
+{'blog': None, 'email': u'aignatov@mirantis.com', 'login': u'aignatov', 'company': None, 'location': None}
+{'blog': None, 'email': u'nkonovalov@mirantis.com', 'login': u'Konovalov-Nik', 'company': None, 'location': None}
+{'blog': None, 'email': u'reshetniaksv@gmail.com', 'login': u'posox', 'company': u'Mirantis', 'location': u'Saratov'}
+{'login': u'ylobankov'}
+{'blog': None, 'email': u'nprivalova@mirantis.com', 'login': u'nprivalova', 'company': u'Mirantis', 'location': None}
+{'blog': None, 'email': u'alexander.a.kuznetsov@gmail.com', 'login': u'AKuznetsov', 'company': u'Mirantis', 'location': None}
+{'blog': None, 'email': None, 'login': u'tmckayus', 'company': None, 'location': None}
+{'blog': None, 'email': None, 'login': u'ruhe', 'company': u'Mirantis Inc.', 'location': None}
+{'blog': None, 'email': None, 'login': u'vrovachev', 'company': None, 'location': None}
+{'login': u'jmaron'}
+{'login': u'ityaptin'}
+{'blog': u'http://spinningmatt.wordpress.com/', 'email': u'matt@cs.wisc.edu', 'login': u'mattf', 'company': None, 'location': None}
+{'login': u'nmakhotkin'}
+{'login': u'alazarev'}
+{'login': u'jspeidel'}
+{'blog': None, 'email': None, 'login': u'crobby', 'company': u'Red Hat', 'location': None}
+{'blog': u'http://fungi.yuggoth.org/', 'email': u'fungi@yuggoth.org', 'login': u'fungi', 'company': None, 'location': u'Raleigh, NC, USA'}
+{'login': u'bergenholtz'}
+{'blog': None, 'email': None, 'login': u'DinaBelova', 'company': u'Mirantis', 'location': u'Saratov, Russian Federation'}
+{'blog': None, 'email': None, 'login': u'iberezovskiy', 'company': None, 'location': None}
+{'blog': u'http://rnirmal.com', 'email': None, 'login': u'rnirmal', 'company': u'Rackspace Hosting', 'location': u'Austin, TX'}
+
+
+----------------------------------------------------------------
+Rackspace Affiliation: {u'rnirmal': {'blog': u'http://rnirmal.com', 'email': None, 'login': u'rnirmal', 'company': u'Rackspace Hosting', 'location': u'Austin, TX'}} | Count = 1
+
+
+################################################################
+
+################################################################
+Owner/Repo: openstack / savanna-dashboard
+----------------------------------------------------------------
+
+{'blog': None, 'email': u'nkonovalov@mirantis.com', 'login': u'Konovalov-Nik', 'company': None, 'location': None}
+{'blog': None, 'email': None, 'login': u'dmitrymex', 'company': u'Mirantis', 'location': u'Saratov, Russia'}
+{'blog': u'slukjanov.name', 'email': u'me@slukjanov.name', 'login': u'Frostman', 'company': u'Mirantis Inc.', 'location': u'Russia, Saratov'}
+{'blog': None, 'email': None, 'login': u'crobby', 'company': u'Red Hat', 'location': None}
+{'blog': None, 'email': u'alexander.a.kuznetsov@gmail.com', 'login': u'AKuznetsov', 'company': u'Mirantis', 'location': None}
+{'login': u'nmakhotkin'}
+{'blog': None, 'email': u'aignatov@mirantis.com', 'login': u'aignatov', 'company': None, 'location': None}
+{'login': u'alazarev'}
+{'blog': u'http://fungi.yuggoth.org/', 'email': u'fungi@yuggoth.org', 'login': u'fungi', 'company': None, 'location': u'Raleigh, NC, USA'}
+{'blog': u'http://spinningmatt.wordpress.com/', 'email': u'matt@cs.wisc.edu', 'login': u'mattf', 'company': None, 'location': None}
+{'blog': None, 'email': u'nprivalova@mirantis.com', 'login': u'nprivalova', 'company': u'Mirantis', 'location': None}
+{'blog': None, 'email': u'reshetniaksv@gmail.com', 'login': u'posox', 'company': u'Mirantis', 'location': u'Saratov'}
+{'blog': None, 'email': None, 'login': u'vrovachev', 'company': None, 'location': None}
+
+
+----------------------------------------------------------------
+Rackspace Affiliation: {} | Count = 0
+
+
+################################################################
+
+################################################################
+Owner/Repo: openstack / savanna-extra
+----------------------------------------------------------------
+
+{'blog': u'http://spinningmatt.wordpress.com/', 'email': u'matt@cs.wisc.edu', 'login': u'mattf', 'company': None, 'location': None}
+{'blog': None, 'email': None, 'login': u'iberezovskiy', 'company': None, 'location': None}
+{'blog': u'slukjanov.name', 'email': u'me@slukjanov.name', 'login': u'Frostman', 'company': u'Mirantis Inc.', 'location': u'Russia, Saratov'}
+{'blog': None, 'email': u'nprivalova@mirantis.com', 'login': u'nprivalova', 'company': u'Mirantis', 'location': None}
+{'login': u'alazarev'}
+{'blog': None, 'email': u'aignatov@mirantis.com', 'login': u'aignatov', 'company': None, 'location': None}
+{'blog': None, 'email': u'degorenko@mirantis.com', 'login': u'degorenko', 'company': u'Mirantis', 'location': u'Saratov, Russia'}
+{'blog': u'http://fungi.yuggoth.org/', 'email': u'fungi@yuggoth.org', 'login': u'fungi', 'company': None, 'location': u'Raleigh, NC, USA'}
+{'login': u'nmakhotkin'}
+{'blog': None, 'email': None, 'login': u'ruhe', 'company': u'Mirantis Inc.', 'location': None}
+
+
+----------------------------------------------------------------
+Rackspace Affiliation: {} | Count = 0
+
+
+################################################################
+
+################################################################
+Owner/Repo: openstack / savanna-image-elements
+----------------------------------------------------------------
+
+{'blog': u'http://spinningmatt.wordpress.com/', 'email': u'matt@cs.wisc.edu', 'login': u'mattf', 'company': None, 'location': None}
+{'blog': None, 'email': None, 'login': u'iberezovskiy', 'company': None, 'location': None}
+{'blog': u'slukjanov.name', 'email': u'me@slukjanov.name', 'login': u'Frostman', 'company': u'Mirantis Inc.', 'location': u'Russia, Saratov'}
+{'login': u'nmakhotkin'}
+{'blog': None, 'email': u'aignatov@mirantis.com', 'login': u'aignatov', 'company': None, 'location': None}
+{'blog': None, 'email': u'nprivalova@mirantis.com', 'login': u'nprivalova', 'company': u'Mirantis', 'location': None}
+{'blog': None, 'email': u'degorenko@mirantis.com', 'login': u'degorenko', 'company': u'Mirantis', 'location': u'Saratov, Russia'}
+{'blog': u'http://fungi.yuggoth.org/', 'email': u'fungi@yuggoth.org', 'login': u'fungi', 'company': None, 'location': u'Raleigh, NC, USA'}
+{'blog': u'inaugust.com', 'email': None, 'login': u'emonty', 'company': u'Hewlett Packard', 'location': u'New York, NY'}
+{'blog': None, 'email': None, 'login': u'ruhe', 'company': u'Mirantis Inc.', 'location': None}
+
+
+----------------------------------------------------------------
+Rackspace Affiliation: {} | Count = 0
+
+
+################################################################
+
+################################################################
+Owner/Repo: openstack / python-savannaclient
+----------------------------------------------------------------
+
+{'blog': None, 'email': u'nkonovalov@mirantis.com', 'login': u'Konovalov-Nik', 'company': None, 'location': None}
+{'blog': u'slukjanov.name', 'email': u'me@slukjanov.name', 'login': u'Frostman', 'company': u'Mirantis Inc.', 'location': u'Russia, Saratov'}
+{'blog': None, 'email': u'alexander.a.kuznetsov@gmail.com', 'login': u'AKuznetsov', 'company': u'Mirantis', 'location': None}
+{'login': u'rakhmerov'}
+{'blog': None, 'email': None, 'login': u'sergeygalkin', 'company': u'Mirantis Inc', 'location': u'Saratov'}
+{'blog': None, 'email': u'aignatov@mirantis.com', 'login': u'aignatov', 'company': None, 'location': None}
+{'blog': u'http://fungi.yuggoth.org/', 'email': u'fungi@yuggoth.org', 'login': u'fungi', 'company': None, 'location': u'Raleigh, NC, USA'}
+{'login': u'nmakhotkin'}
+{'login': u'ylobankov'}
+
+
+----------------------------------------------------------------
+Rackspace Affiliation: {} | Count = 0
+
+
+################################################################
