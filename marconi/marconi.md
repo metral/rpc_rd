@@ -16,7 +16,8 @@ The aim is to create an open alternative to SQS (producer-consumer) and SNS
 
 ## Project Maturity
 * **OpenStack Program Status:** Incubation
-* **Usability Timeframe:** Beta
+* **Usability Timeframe:**
+  * Rackspace Cloud Queues: Beta
   * Current version is capable of running on top of Havana
 
 ## Dependencies
