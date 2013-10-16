@@ -79,7 +79,7 @@ function checkout_deployment_repo {
 
   if ! ( make build-root ); then
     echo "Something went wrong, please run the following by hand."
-    echo "  cd U${repo_dir}/image-builder"
+    echo "  cd ${repo_dir}/image-builder"
     echo "  make build-root"
     exit 1
   fi 
@@ -88,7 +88,7 @@ function checkout_deployment_repo {
 
   if ! ( make test-build-files ); then
     echo "Something went wrong, please run the following by hand."
-    echo "  cd U${repo_dir}/image-builder"
+    echo "  cd ${repo_dir}/image-builder"
     echo "  make test-build-files"
     exit 1
   fi
@@ -98,17 +98,19 @@ function checkout_deployment_repo {
   popd
 }
 
-function grab_additional_image_builder_deps {
-  local basedir=/opt/image-builder 
-  local imgdir=${basedir}/libvirt/images
-  local filedir=${basedir}/share/files
-
+function check_for_windows_iso {
   if ! [[ -e ${WIN_ISO_PATH} ]]; then
     echo "You need to download the Windows Server 2012 Evaluation iso."
     echo "  Grab it from http://technet.microsoft.com/en-us/evalcenter/hh670538.aspx"
     echo "Once downloaded place it at ${WIN_ISO_PATH}"
     exit 1
   fi
+}
+
+function grab_additional_image_builder_deps {
+  local basedir=/opt/image-builder
+  local imgdir=${basedir}/libvirt/images
+  local filedir=${basedir}/share/files
 
   if ! [[ -e ${imgdir}/${WIN_ISO_NAME} ]]; then
     cp ${WIN_ISO_PATH} ${imgdir}
@@ -136,6 +138,7 @@ function grab_additional_image_builder_deps {
 
 }
 
+check_for_windows_iso
 install_packages
 install_and_configure_samba
 checkout_deployment_repo
