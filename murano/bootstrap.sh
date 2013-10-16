@@ -4,7 +4,12 @@ set -e
 set -u
 set -x
 
+MURANO_RELEASE=${MURANO_RELEASE:-release-0.3}
+DEVSTACK_RELEASE=${DEVSTACK_RELEASE:-stable/grizzly}
+MY_IP=$(hostname -I | cut -d' ' -f1)
+
 export DEBIAN_FRONTEND=noninteractive
+
 
 function install_packages {
   apt-get update 2>&1>/dev/null
@@ -12,17 +17,17 @@ function install_packages {
   apt-get install -y build-essential python-pip python-dev libxml2-dev libxslt-dev libffi-dev git 
 }
 
-function configure_devstack {
+function configure_and_run_devstack {
   if ! [[ -e /opt/devstack ]]; then
     git clone https://github.com/openstack-dev/devstack.git /opt/devstack
   fi
 
   pushd /opt/devstack
   
-  git checkout stable/grizzly
+  git checkout ${DEVSTACK_RELEASE}
 
-  # figure out the systems primary IP
-  MY_IP=$(hostname -I | cut -d' ' -f1)
+  # Need to fixup the SHELL_AFTER_RUN line
+  sed -i 's/source stack.sh/bash stack.sh/g' stack.sh
 
   tee /opt/devstack/localrc <<EOH
 ADMIN_PASSWORD=secrete
@@ -76,29 +81,129 @@ EOH
   popd
 }
 
-function install_and_configure_samba {
-  # Configure user security
-  sed -i 's/#   security = user/   security = user/g' /etc/samba/smb.conf 
+function install_murano {
+  local basedir="/opt/git"
+  local murano_dir="${basedir}/murano-deployment"
+  local murano_conf_dir="/etc/murano-deployment"
 
-  # Configure the image-builder-share
-  if ! ( grep "\[image-builder-share\]" /etc/samba/smb.conf ); then
-    cat >> /etc/samba/smb.conf <<EOH
-[image-builder-share]
-   comment = Murano Image Builder Share
-   path = /opt/image-builder/share
-   browsable = yes
-   guest ok = yes
-   guest account = nobody
-   read only = no
-   create mask = 0755
-EOH
+  if ! [[ -e ${basedir} ]]; then
+    mkdir /opt/git
   fi
-  echo "Restarting smbd"
-  restart smbd 2>&1 >/dev/null
-  echo "Restarting nmbd"
-  restart nmbd 2>&1 >/dev/null
+
+  if ! [[ -e ${murano_dir} ]]; then
+    git clone https://github.com/stackforge/murano-deployment.git -b ${MURANO_RELEASE} ${murano_dir}
+  fi
+
+  if ! [[ -e ${murano_conf_dir} ]]; then
+    mkdir ${murano_conf_dir}
+  fi
+
+  tee ${murano_conf_dir}/lab-binding.rc <<EOH
+LAB_HOST='${MY_IP}'
+
+ADMIN_USER='admin'
+ADMIN_PASSWORD='secrete'
+
+RABBITMQ_LOGIN='guest'
+RABBITMQ_PASSWORD='rabbitpass'
+RABBITMQ_VHOST=''
+#RABBITMQ_HOST=''
+#RABBITMQ_HOST_ALT=''
+
+BRANCH_NAME='${MURANO_RELEASE}'
+
+# Only 'true' or 'false' values are allowed!
+SSL_ENABLED='false'
+SSL_CA_FILE=''
+SSL_CERT_FILE=''
+SSL_KEY_FILE=''
+
+#FILE_SHARE_HOST=''
+
+#BRANCH_MURANO_API=''
+#BRANCH_MURANO_DASHBOARD=''
+#BRANCH_MURANO_CLIENT=''
+#BRANCH_MURANO_CONDUCTOR=''
+EOH
+
+  pushd ${murano_dir}/devbox-scripts
+
+  # this script expects to install openstack-dashboard packages, not from devstack
+  sed -i 's|/usr/share/openstack-dashboard/openstack_dashboard/settings.py|/opt/stack/horizon/openstack_dashboard/settings.py|g' murano-git-install.sh 
+  sed -i 184's/ openstack-dashboard//g' murano-git-install.sh
+
+  if ! ( ./murano-git-install.sh prerequisites ); then
+    echo "Something went wrong, please run the following command by hand."
+    echo "  cd ${murano_dir}/devbox-scripts"
+    echo "  ./murano-git-install.sh prerequisites"
+    exit 1
+  fi
+
+  if ! [[ -e /var/log/murano-dashboard.log ]]; then
+    touch /var/log/murano-dashboard.log
+  fi
+  chown stack /var/log/murano-dashboard.log
+
+  if ! ( ./murano-git-install.sh install ); then
+    echo "Something went wrong, please run the following command by hand."
+    echo "  cd ${murano_dir}/devbox-scripts"
+    echo "  ./murano-git-install.sh install"
+    exit 1
+  fi
+
+  popd
+
+  sed -i 's/swordfish/secrete/' /etc/murano-api/murano-api.conf
+  service murano-api restart
+  service murano-conductor restart
 }
 
+function upload_cirros_image {
+  local cirros_url="http://download.cirros-cloud.net/0.3.1/cirros-0.3.1-x86_64-disk.img"
+  local tmpdir=$(mktemp -d)
+
+  pushd ${tmpdir}
+  wget -q ${cirros_url} -O cirros.img
+  source /opt/devstack/openrc admin admin
+  glance image-create --name "cirros-image" --is-public True --container-format bare --disk-format qcow2 --file cirros.img
+  popd
+  rm -rf ${tmpdir}
+}
+
+function upload_murano_image {
+  local murano_img_name="ws-2012-std.qcow2"
+  local murano_img_path="/opt"
+  local murano_img="${murano_img_path}/${murano_img_name}"
+
+  if ! [[ -e ${murano_img} ]]; then
+    echo "Murano image not found. Please place the image at ${murano_img}"
+    exit 1
+  fi
+
+  tmpfile=$(mktemp)
+  tee ${tmpfile} <<EOH
+set -x
+
+glance image-create --name "ws-2012-std" --is-public true \
+--container-format bare --disk-format qcow2 \
+--file ${murano_img} \
+--property murano_image_info='{"type":"windows.2012", "title":"Windows Server 2012"}'
+EOH
+  chmod +x ${tmpfile}
+
+  source /opt/devstack/openrc admin admin
+  if ! ( glance image-list | grep ws-2012-std ); then
+    if ! ( ${tmpfile} ); then
+      echo "There was an error uploading the Murano windows image"
+      exit 1
+    fi
+  fi
+}
+
+####################
+
 install_packages
-configure_devstack
-#install_and_configure_samba
+#configure_and_run_devstack
+#install_murano
+#upload_cirros_image
+upload_murano_image
