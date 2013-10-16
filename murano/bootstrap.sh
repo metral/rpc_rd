@@ -6,6 +6,8 @@ set -x
 
 MURANO_RELEASE=${MURANO_RELEASE:-release-0.3}
 DEVSTACK_RELEASE=${DEVSTACK_RELEASE:-stable/grizzly}
+MURANO_IMG_NAME=${MURANO_IMG_NAME:-ws-2012-std.qcow2}
+MURANO_IMG="/opt/${MURANO_IMG_NAME}"
 MY_IP=$(hostname -I | cut -d' ' -f1)
 
 export DEBIAN_FRONTEND=noninteractive
@@ -53,6 +55,10 @@ DATABASE_TYPE=mysql
 # Enable Heat
 #
 ENABLED_SERVICES+=,heat,h-api,h-api-cfn,h-api-cw,h-eng
+
+# Disable Tempest
+#
+disable_service tempest
 
 # Add Fedora 17 image for load balancer
 #
@@ -170,23 +176,21 @@ function upload_cirros_image {
   rm -rf ${tmpdir}
 }
 
-function upload_murano_image {
-  local murano_img_name="ws-2012-std.qcow2"
-  local murano_img_path="/opt"
-  local murano_img="${murano_img_path}/${murano_img_name}"
-
-  if ! [[ -e ${murano_img} ]]; then
-    echo "Murano image not found. Please place the image at ${murano_img}"
+function check_for_murano_image {
+  if ! [[ -e ${MURANO_IMG} ]]; then
+    echo "Murano image not found. You will need to build a windows image and place the image at ${MURANO_IMG}"
     exit 1
   fi
+}
 
-  tmpfile=$(mktemp)
+function upload_murano_image {
+  local tmpfile=$(mktemp)
   tee ${tmpfile} <<EOH
 set -x
 
 glance image-create --name "ws-2012-std" --is-public true \
 --container-format bare --disk-format qcow2 \
---file ${murano_img} \
+--file ${MURANO_IMG} \
 --property murano_image_info='{"type":"windows.2012", "title":"Windows Server 2012"}'
 EOH
   chmod +x ${tmpfile}
@@ -203,7 +207,8 @@ EOH
 ####################
 
 install_packages
-#configure_and_run_devstack
-#install_murano
+check_for_murano_image
+configure_and_run_devstack
+install_murano
 #upload_cirros_image
 upload_murano_image
