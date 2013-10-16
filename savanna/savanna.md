@@ -54,8 +54,9 @@ parameters.
       * irc channel - #openstack-marconi
 
 ## Rackspace Involvement
-* Sergey Lukjanov (Mirantis) is PTL
-* Rackspace does not seem to have much involvement
+* Sergey Lukjanov (Mirantis) is PTL & Mirantis primarily composes all
+contributors
+* Rackspace has minimal to no involvement
 
 ## Links
 * [Wiki](https://wiki.openstack.org/wiki/Savanna)
