@@ -13,6 +13,9 @@ Murano allows non-experienced users to deploy reliable Windows based environment
   * Has not yet applied for Incubation
 * **Usability Timeframe:** Near Term
   * Current version is capable of running on top of Grizzly code base (few bugs related to quantum/neutron rename)
+* **ISSUES:**
+  * Windows Image Building is not very mature, and the code is moving a lot
+  * Windows Image portability is problematic (can have deep knowledge of CPU features)
 
 
 ## Dependencies
