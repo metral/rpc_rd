@@ -16,7 +16,7 @@ export DEBIAN_FRONTEND=noninteractive
 function install_packages {
   apt-get update 2>&1>/dev/null
   echo "Installing required packages"
-  apt-get install -y build-essential python-pip python-dev libxml2-dev libxslt-dev libffi-dev git 
+  apt-get install -y build-essential python-pip python-dev libxml2-dev libxslt-dev libffi-dev git dos2unix
 }
 
 function configure_and_run_devstack {
@@ -160,6 +160,8 @@ EOH
   popd
 
   sed -i 's/swordfish/secrete/' /etc/murano-api/murano-api.conf
+  dos2unix /etc/murano-conductor/conductor.conf
+  sed -i 's|auth_url = |auth_url = http://${MY_IP}:5000/v2.0|g' /etc/murano-conductor/conductor.conf
   service murano-api restart
   service murano-conductor restart
 }
