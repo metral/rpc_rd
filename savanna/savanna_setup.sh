@@ -108,7 +108,7 @@ cd ~/nodegroup_templates
 (cat | tee ng_master_template_create.json) << EOF
 {
     "name": "test-master-tmpl",
-    "flavor_id": "3",
+    "flavor_id": "2",
     "plugin_name": "vanilla",
     "hadoop_version": "1.2.1",
     "node_processes": ["jobtracker", "namenode"]
@@ -118,7 +118,7 @@ EOF
 (cat | tee ng_worker_template_create.json) << EOF
 {
     "name": "test-worker-tmpl",
-    "flavor_id": "3",
+    "flavor_id": "2",
     "plugin_name": "vanilla",
     "hadoop_version": "1.2.1",
     "node_processes": ["tasktracker", "datanode"]
@@ -198,8 +198,8 @@ echo "All done. VM's should be building/booting above. VM Booting + Hadoop launc
 
 # Usage example
 echo ""
-echo"Usage - Create a Hadoop job on the master node (should be 10.0.0.2)"
-echo"-------------------------------------------------------------------"
+echo "Usage - Create a Hadoop job on the master node (should be 10.0.0.2)"
+echo "-------------------------------------------------------------------"
 echo "$ ssh -i savanna.pem ubuntu@10.0.0.2"
 echo "$ sudo chmod 777 /usr/share/hadoop"
 echo "$ sudo su hadoop"
