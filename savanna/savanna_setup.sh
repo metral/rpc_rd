@@ -164,6 +164,8 @@ echo $CLUSTER
 CLUSTER_TEMPLATE_ID=`echo $CLUSTER | python -c 'import json,sys;obj=json.load(sys.stdin);print obj["cluster_template"]["id"]'`
 echo $CLUSTER_TEMPLATE_ID
 
+sleep 30
+
 # Create Hadoop cluster
 (cat | tee cluster_create.json) << EOF
 {
@@ -189,7 +191,7 @@ echo "export TENANT_ID=$TENANT_ID"
 echo "export IMAGE_ID=$IMAGE_ID"
 echo "================================================"
 
-sleep 10
+sleep 15
 source ~/creds
 nova list
 
