@@ -53,6 +53,7 @@ Murano allows non-experienced users to deploy reliable Windows based environment
   * gerrit code reviews
   * code base lives in Stackforge
   * weekly irc meetings on openstack channels
+    * irc channel - #murano
 
 ## Rackspace Involvement
 * There are no known rackspace engineers currently contributing to this project
