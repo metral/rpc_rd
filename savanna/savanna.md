@@ -1,6 +1,6 @@
 # Project Savanna 
 
-Date: 10/16/2013
+Date: 10/17/2013
 
 ## Elevator Pitch
 
@@ -27,15 +27,15 @@ Savanna is known as Data Processing as a Service
 potentially Ironic for provisioning bare metal or hybrid Hadoop clusters
 
 ## Persona Target
+* Cloud User wants to analyze big data aka map/reduce type jobs
+* Cloud Provider wants to offer Hadoop Data Processing as a Service
   
 ## Example Use Cases
 * Fast provisioning of Hadoop clusters on OpenStack for Dev and QA;
 * Utilization of unused compute power from general purpose OpenStack IaaS
   cloud;
-* “Analytics as a Service” for ad-hoc or bursty analytic workloads (similar to
+* "Analytics as a Service" for ad-hoc or bursty analytic workloads (similar to
   AWS EMR).
-
-## Out of Scope Use Cases
 
 ## Misc Notes
 * Managed through REST API with UI available as part of OpenStack Dashboard
@@ -44,7 +44,8 @@ potentially Ironic for provisioning bare metal or hybrid Hadoop clusters
     * Integration with vendor specific management tools, such as Apache Ambari or
     Cloudera Management Console;
 * Predefined templates of Hadoop configurations with ability to modify
-parameters.
+parameters
+* Use latest tarball (0.3+) with pip install 
 
 ## Community Information
 * Use OpenStack infrastructure
@@ -60,6 +61,10 @@ contributors
 
 ## Links
 * [Wiki](https://wiki.openstack.org/wiki/Savanna)
+* [Docs](https://savanna.readthedocs.org/en/latest/)
+* [Workflow / Architecture](https://savanna.readthedocs.org/en/latest/overview.html#general-workflow)
+* [Incubation Acceptance Blog](https://www.mirantis.com/blog/savanna-accepted-into-openstack-incubation/)
+* [Savana 'pip' tarballs](http://tarballs.openstack.org/savanna/)
 
 ## Code Repositories
 * [Source](https://github.com/search?q=%40openstack+savanna)
