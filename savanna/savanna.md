@@ -1,6 +1,6 @@
 # Project Savanna 
 
-Date: 10/17/2013
+Date: 10/18/2013
 
 ## Elevator Pitch
 
@@ -52,7 +52,7 @@ parameters
   * gerrit code reviews
   * code base lives in github
   * weekly irc meetings
-      * irc channel - #openstack-marconi
+      * irc channel - #savanna
 
 ## Rackspace Involvement
 * Sergey Lukjanov (Mirantis) is PTL & Mirantis primarily composes all
