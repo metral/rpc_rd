@@ -1,6 +1,6 @@
 # Project Designate 
 
-Date: 10/22/2013
+Date: 10/23/2013
 
 ## Elevator Pitch
 Designate is a DNS as-a-service project. It is intended to be used to provide
@@ -24,20 +24,18 @@ to other OpenStack projects by automating the name resolution changes required
 for the creation and deletion of Nova instances or other components.
 
 ## Project Maturity
-* **OpenStack Program Status:** Incubation
+* **OpenStack Program Status:** Applied for Incubation
 * **Usability Timeframe:** Beta
   * Current version (2013.2.a261.gfde4d7e) is capable of running on top of Havana
 
 ## Dependencies
 * Ubuntu 12.04
-* Requires: Nova & Neutron EventQ, Keystone
+* Requires: Nova & Neutron EventQ, Keystone, RabbitMQ
 
 ## Persona Target
+* Cloud Admin wants to setup domain for all of the users VMs
+* Cloud User wants to manage domains for different projects
   
-## Example Use Cases
-
-## Misc Notes
-
 ## Community Information
 * Use OpenStack infrastructure
   * gerrit code reviews
@@ -46,6 +44,11 @@ for the creation and deletion of Nova instances or other components.
       * irc channel - #openstack-dns
 
 ## Rackspace Involvement
+* Kiall Mac Innes (HP Cloud) is PTL & HP primarily composes all
+contributors
+* Rackspace has minimal involvment
+    * Rackers
+        * Tim Simmons
 
 ## Links
 * [Wiki](https://wiki.openstack.org/wiki/Designate)

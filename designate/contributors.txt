@@ -1,0 +1,26 @@
+
+################################################################
+Owner/Repo: stackforge / designate
+----------------------------------------------------------------
+
+{'name': u'Kiall Mac Innes', 'company': None, 'blog': None, 'location': None, 'login': u'kiall', 'email': u''}
+{'name': u'Endre Karlson', 'company': u'HP CloudServices', 'blog': None, 'location': u'Stavanger', 'login': u'ekarlso', 'email': u'endre.karlson@gmail.com'}
+{'name': u'Patrick Galbraith', 'company': u'HP Cloud Services', 'blog': None, 'location': u'Sharon,  NH', 'login': u'CaptTofu', 'email': u'patg@patg.net'}
+{'name': u'Simon McCartney', 'company': None, 'blog': u'http://www.mccartney.ie/', 'location': None, 'login': u'simonmcc', 'email': u'simon@mccartney.ie'}
+{}
+{'name': u'Tim Simmons', 'company': u'Rackspace Hosting', 'blog': u'timsimmons.me', 'location': u'Austin, TX', 'login': u'TimSimmons', 'email': u'tim.simmons@rackspace.com'}
+{'name': u'Graham Hayes', 'company': u'HP Cloud Services', 'blog': u'', 'location': u'Dublin, Ireland', 'login': u'grahamhayes', 'email': u'graham@hayes.ie'}
+{'name': u'Michael Still', 'company': None, 'blog': u'http://www.stillhq.com', 'location': u'Canberra, Australia', 'login': u'mikalstill', 'email': u'mikal@stillhq.com'}
+{}
+{}
+{'name': u'Davide Guerri', 'company': u'Unidata S.p.A.', 'blog': u'http://about.me/davide_guerri', 'location': u'Rome', 'login': u'dguerri', 'email': u'davide.guerri@gmail.com'}
+{'name': u'Monty Taylor', 'company': u'Hewlett Packard', 'blog': u'inaugust.com', 'location': u'New York, NY', 'login': u'emonty', 'email': None}
+{'name': u'Russell Bryant', 'company': u'Red Hat, Inc.', 'blog': u'http://www.russellbryant.net', 'location': u'Charleston, SC, USA', 'login': u'russellb', 'email': u'russell@russellbryant.net'}
+{}
+
+
+----------------------------------------------------------------
+Rackspace Affiliation: {u'TimSimmons': {'name': u'Tim Simmons', 'company': u'Rackspace Hosting', 'blog': u'timsimmons.me', 'location': u'Austin, TX', 'login': u'TimSimmons', 'email': u'tim.simmons@rackspace.com'}} | Count = 1
+
+
+################################################################
