@@ -58,6 +58,8 @@ parameters
 * Sergey Lukjanov (Mirantis) is PTL & Mirantis primarily composes all
 contributors
 * Rackspace has minimal to no involvement
+    * Rackers
+        * Nirmal Ranganathan
 
 ## Links
 * [Wiki](https://wiki.openstack.org/wiki/Savanna)
