@@ -46,9 +46,6 @@ for the creation and deletion of Nova instances or other components.
       * irc channel - #openstack-dns
 
 ## Rackspace Involvement
-* Sergey Lukjanov (Mirantis) is PTL & Mirantis primarily composes all
-contributors
-* Rackspace has minimal to no involvement
 
 ## Links
 * [Wiki](https://wiki.openstack.org/wiki/Designate)
