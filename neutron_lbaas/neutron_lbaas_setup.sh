@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Runtime Duration: ~ 15 minutes
+# Runtime Duration: ~ 12 minutes
 
 # Test that the user is *not* root - devstack requires it be a user
 if [ "$(id -u)" == "0" ]; then
@@ -129,7 +129,7 @@ neutron lb-member-create --address $PRIVATE_IP2 --protocol-port 80 mypool-foobar
 HEALTH_MONITOR_ID=`neutron lb-healthmonitor-create --delay 3 --type HTTP --max-retries 3 --timeout 3 | grep id | grep -v tenant | awk '{print $4}'`
 neutron lb-healthmonitor-associate $HEALTH_MONITOR_ID mypool-foobar
 VIP=`neutron lb-vip-create --name myvip-foobar --protocol-port 80 --protocol HTTP --subnet-id $PRIVATE_SUBNET_ID mypool-foobar | grep address | awk '{print $4}'`
-VIP_ID=`neutron port-list | grep 10.0.0.5 | awk '{print $2}'`
+VIP_ID=`neutron port-list | grep $VIP | awk '{print $2}'`
 
 FLOATING_IP_CREATE=`neutron floatingip-create public`
 FLOATING_IP=`echo "$FLOATING_IP_CREATE" | grep floating_ip_address | awk '{print $4}'`
