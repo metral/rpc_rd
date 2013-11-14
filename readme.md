@@ -7,7 +7,7 @@ The following directories contain:
 * A setup script with usage examples to bootstrap an environment with
 the respective project
 
-All Setup Scripts are run on:
+All project setup scripts (except Murano) are run on:
 
 * Ubuntu 12.04 LTS (Vanilla)
 * Rackspace Instance Flavor: 8GB RAM | 4 vCPU | 320GB Disk
