@@ -1,4 +1,4 @@
-# Rackspace Private Cloud Reasearch & Development
+# Rackspace Private Cloud Research & Development
 
 ## Overview
 The following directories contain:
