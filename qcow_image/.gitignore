@@ -1,3 +1,4 @@
 *.sw*
 *.img
 *.vhd
+xen-*
