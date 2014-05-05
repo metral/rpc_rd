@@ -5,10 +5,15 @@ import os
 use_snet = sys.argv[1]
 region = sys.argv[2].upper()
 filepath = sys.argv[3]
+basename = os.path.basename(filepath)
+image_name = sys.argv[4]
 
 pyrax.set_setting("identity_type", "rackspace")
 creds_file = os.path.expanduser("~/pyrax_rc")
 pyrax.set_credential_file(creds_file, region)
+
+imgs = pyrax.images
+cf = None
 
 # Only use service net for cloudfiles if on public cloud
 if use_snet == "true":
@@ -16,6 +21,24 @@ if use_snet == "true":
 else:
     cf = pyrax.cloudfiles
 
-
 cont = cf.create_container("images")
 cf.upload_file(cont, filepath)
+obj = cont.get_object(basename)
+
+task = imgs.import_task(obj, cont, img_format="VHD", img_name=image_name)
+
+pyrax.utils.wait_until(task, "status", ["success", "failure"],
+        verbose=True, interval=30)
+print()
+if task.status == "success":
+    print("Success!")
+    print("Your new image:")
+    new_img = imgs.find(name=obj_name)
+    print(" ID: %s" % new_img.id)
+    print(" Name: %s" % new_img.name)
+    print(" Status: %s" % new_img.status)
+    print(" Size: %s" % new_img.size)
+    print(" Tags: %s" % new_img.tags)
+else:
+    print("Image import failed!")
+    print("Reason: %s" % task.message)
