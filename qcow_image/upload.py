@@ -32,13 +32,6 @@ pyrax.utils.wait_until(task, "status", ["success", "failure"],
 print()
 if task.status == "success":
     print("Success!")
-    print("Your new image:")
-    new_img = imgs.find(name=obj_name)
-    print(" ID: %s" % new_img.id)
-    print(" Name: %s" % new_img.name)
-    print(" Status: %s" % new_img.status)
-    print(" Size: %s" % new_img.size)
-    print(" Tags: %s" % new_img.tags)
 else:
     print("Image import failed!")
     print("Reason: %s" % task.message)
