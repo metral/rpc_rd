@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import pyrax
 import sys
 import os
