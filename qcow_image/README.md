@@ -25,11 +25,12 @@ This series of scripts will take a QCOW disk image, convert it to the VHD format
   
   4. upload_to_cloudimages.py <PUBLIC_CLOUD_REGION> <VHD_PATH> <CUSTOM_IMAGE_NAME>
    * __Assumes__: pyrax creds stored in ~/pyrax_rc formatted as such:
-```
-[rackspace_cloud]
-username = <RAX_USERNAME>
-api_key = <RAX_API_KEY>
-```
+     
+     ```
+     [rackspace_cloud]
+     username = <RAX_USERNAME>
+     api_key = <RAX_API_KEY>
+     ```
    * i.e `python upload_to_cloudimages.py ORD trusty-server-cloudimg-amd64-disk1.vhd "myubuntu_1404"`
    * Uploads the new VHD image upto the Rackspace Public Cloud region with the custom image name provided
      * Specifically, uploads the VHD to the Cloud Files in the region provided
