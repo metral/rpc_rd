@@ -7,6 +7,7 @@ This series of scripts will take a QCOW disk image, convert it to the VHD format
 ## Usage
   
   1. compile_vhdutil.sh
+   * ie `./compile_vhdutil.sh`
    * Pulls Xen 4.4.0 source and *only* compiles the tools sub-directory
    * The tools subdirectory contains the `vhd-util` utility used to convert a RAW disk image into VHD format
   
@@ -23,7 +24,7 @@ This series of scripts will take a QCOW disk image, convert it to the VHD format
    * Then, converts the RAW image into VHD
   
   4. upload_to_cloudimages.py <PUBLIC_CLOUD_REGION> <VHD_PATH> <CUSTOM_IMAGE_NAME>
-   * i.e `python upload_to_cloudimages.py ORD trusty-server-cloudimg-amd64-disk1.vhd "myubuntu_1404"
+   * i.e `python upload_to_cloudimages.py ORD trusty-server-cloudimg-amd64-disk1.vhd "myubuntu_1404"`
    * Uploads the new VHD image upto the Rackspace Public Cloud region with the custom image name provided
      * Specifically, uploads the VHD to the Cloud Files in the region provided
      * Then, registers the image with Cloud Images which allows for it to be an option upon instance boot
