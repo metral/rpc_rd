@@ -29,7 +29,7 @@ sudo mv /mnt/image/etc/resolv.conf /mnt/image/etc/resolv.conf.bak
 sudo cp -f /etc/resolv.conf /mnt/image/etc/resolv.conf
 
 # Modify qcow to work for RAX public cloud
-pushd modify_qcow_scripts
+pushd distro_scripts 
 #sudo cp xentools.sh novaagent.sh stop_cloudinit.sh /mnt/image/tmp/
 sudo cp ubuntu_14.04.sh /mnt/image/tmp/
 popd
