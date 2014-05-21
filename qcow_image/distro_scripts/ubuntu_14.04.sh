@@ -5,17 +5,13 @@ apt-get install cloud-initramfs-dyn-netconf -y
 
 # install xentools
 wget http://boot.rackspace.com/files/xentools/xs-tools-6.2.0.iso
-
 mkdir xentmp
 mount -o loop xs-tools-6.2.0.iso xentmp
 pushd xentmp/Linux
-
 # Force install (as 12.04 even though this is 14.04)
 # since xenserver tools only supports upto ubuntu 12.04
 os_minorver="04" ./install.sh -d "ubuntu" -m "12" -n
-
 popd
-
 umount -l xentmp
 rm -rf xentmp
 
@@ -29,12 +25,10 @@ tar xzf nova-agent-*.tar.gz
 sed '1i### BEGIN INIT INFO\n# Provides: Nova-Agent\n# Required-Start: $remote_fs $syslog\n# Required-Stop: $remote_fs $syslog\n# Default-Start: 2 3 4 5\n# Default-Stop: 0 1 6\n# Short-Description: Start daemon at boot time\n# Description: Enable service provided by daemon.\n### END INIT INFO\n' /usr/share/nova-agent/1.39.0/etc/generic/nova-agent > /usr/share/nova-agent/1.39.0/etc/generic/nova-agent.lsb
 cp -av /usr/share/nova-agent/1.39.0/etc/generic/nova-agent.lsb /etc/init.d/nova-agent
 chmod +x /etc/init.d/nova-agent
-#update-rc.d -f nova-agent defaults
-#/etc/init.d/nova-agent restart
 cd ..
 rm -rf nova-agent
 
-# our cloud-init config
+# RAX cloud-init config
 cat > /etc/cloud/cloud.cfg.d/10_rackspace.cfg <<'EOF'
 apt_preserve_sources_list: True
 disable_root: False
@@ -77,7 +71,7 @@ EOF
 echo 'net.ipv4.conf.eth0.arp_notify = 1' >> /etc/sysctl.conf
 echo 'vm.swappiness = 0' >> /etc/sysctl.conf
 
-# our fstab is fonky
+# RAX fstab is funky
 cat > /etc/fstab <<'EOF'
 # /etc/fstab: static file system information.
 #
@@ -93,10 +87,6 @@ EOF
 # keep grub2 from using UUIDs and regenerate config
 sed -i 's/#GRUB_DISABLE_LINUX_UUID.*/GRUB_DISABLE_LINUX_UUID="true"/g' /etc/default/grub
 update-grub
-
-# update
-#apt-get update
-#apt-get -y dist-upgrade
 
 # cloud-init / nova-agent sad panda hacks
 cat > /etc/init/cloud-init-local.conf <<'EOF'
@@ -121,7 +111,6 @@ EOF
 unset UCF_FORCE_CONFFOLD
 export UCF_FORCE_CONFFNEW=YES
 ucf --purge /boot/grub/menu.lst
-#apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy
 
 export DEBIAN_FRONTEND=noninteractive
 
