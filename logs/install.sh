@@ -21,3 +21,10 @@ curl -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticse
 tar zxvf elasticsearch*.tar.gz
 rm -rf elasticsearch*.tar.gz
 popd
+
+# install kibana
+pushd /opt
+wget https://download.elasticsearch.org/kibana/kibana/kibana-3.1.0.tar.gz
+tar zxvf kibana*.tar.gz
+rm -rf kibana*.tar.gz
+popd
