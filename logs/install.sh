@@ -12,7 +12,6 @@ curl -O https://download.elasticsearch.org/logstash/logstash/logstash-1.4.1.tar.
 tar zxvf logstash*.tar.gz
 rm -rf logstash*.tar.gz
 popd
-cp agent.conf /opt/logstash*
 cp extras /opt/logstash*/patterns/
 
 # install elasticsearch

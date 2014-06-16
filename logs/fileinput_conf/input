@@ -1,0 +1,45 @@
+#===============================================================================
+input {
+    #---------------------------------------------------------------------------
+    # Nova logs
+    file {
+        type => "nova"
+        start_position => "beginning"
+        sincedb_path => "/dev/null"
+        path => [
+                 "/var/log/nova/nova-api-os-compute.log",
+                 "/var/log/nova/nova-cert.log",
+                 "/var/log/nova/nova-compute.log",
+                 "/var/log/nova/nova-consoleauth.log",
+                 "/var/log/nova/nova-conductor.log",
+                 "/var/log/nova/nova-dhcpbridge.log",
+                 "/var/log/nova/nova-manage.log",
+                 "/var/log/nova/nova-network.log",
+                 "/var/log/nova/nova-scheduler.log"
+                  ]
+    }
+    #---------------------------------------------------------------------------
+    # Keystone logs
+    file {
+        type => "keystone"
+        start_position => "beginning"
+        sincedb_path => "/dev/null"
+        path => [
+                 "/var/log/keystone/keystone.log"
+                  ]
+    }
+    #---------------------------------------------------------------------------
+    # Cinder logs
+    file {
+        type => "cinder"
+        start_position => "beginning"
+        sincedb_path => "/dev/null"
+        path => [
+                 "/var/log/cinder/cinder-api.log",
+                 "/var/log/cinder/cinder-scheduler.log",
+                 "/var/log/cinder/cinder-volume.log"
+                  ]
+    }
+    #---------------------------------------------------------------------------
+}
+#===============================================================================
