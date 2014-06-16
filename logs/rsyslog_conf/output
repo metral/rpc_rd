@@ -1,7 +1,7 @@
 #===============================================================================
 output {
     elasticsearch {
-        host => '192.168.1.100'
+        host => '<IPADDR>'
         port => '9300'
         protocol => 'transport'
         cluster => 'openstack'
